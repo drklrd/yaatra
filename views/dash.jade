@@ -1,0 +1,49 @@
+.container
+    .row
+        .col-xs-6
+            span Column 1
+        .col-xs-6
+            form
+                div.form-group
+                        p
+                            span Write a new itinerary
+                div.form-group
+                        input.form-control(type='text' name="title" placeholder='Title' ng-model='newitinerary.title')
+                div.form-group
+                    input.form-control(type='text' name="place" placeholder='Place of travel' ng-model='newitinerary.place')
+                div.form-group
+                        input.form-control(type='number' name='days' placeholder='No of days' ng-model='newitinerary.days')
+                div.form-group
+                    input.form-control(type='date' placeholder='Start Date' ng-model='newitinerary.startDate')
+                div.form-group
+                    input.form-control(type='date' placeholder='End Date' ng-model='newitinerary.endDate')
+                div.form-group
+                    button.btn.btn-success(ng-click='startAddingItinerary(newitinerary.days)')
+                        span.glyphicon.glyphicon-plus &nbsp;
+                        span Start adding itinerary
+
+#myModal.modal.fade(role='dialog')
+    .modal-dialog
+        // Modal content
+        .modal-content
+            .modal-header
+                button.close(type='button', data-dismiss='modal') ×
+                h4.modal-title Itinerary Add
+            .modal-body
+                p Day {{currentDay}}
+                p
+                    input.form-control(placeholder='From' ng-model='newitinerary.itinerary[currentDay].from')
+                p
+                    input.form-control(placeholder='To' ng-model='newitinerary.itinerary[currentDay].to')
+                p
+                    input.form-control(placeholder='Form of Travel (Walking, Vehicle or such) ' ng-model='newitinerary.itinerary[currentDay].wayOfTravel')
+                p
+                    input.form-control(placeholder='Time Taken' ng-model='newitinerary.itinerary[currentDay].time')
+                p
+                    input.form-control(placeholder='Approximate Distance' ng-model='newitinerary.itinerary[currentDay].dance')
+                p
+                    textarea.form-control(placeholder='Additional Notes' ng-model='newitinerary.itinerary[currentDay].description')
+            .modal-footer
+                button.btn.btn-default.pull-left(ng-click="previous()" ng-disabled="getButtonStatus('previous')") Previous
+                button.btn.btn-default.pull-right(ng-click="continue()" ng-disabled="getButtonStatus('continue')") Continue
+
