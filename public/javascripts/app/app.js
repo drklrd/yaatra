@@ -4,7 +4,8 @@ var appDependencies = [
 	'ghumante.controller',
 	'satellizer',
 	'ghumante.configs',
-	'ui.bootstrap'
+	'ui.bootstrap',
+	'google.places'
 ]
 
 var ghumante = angular.module('ghumante',appDependencies);

@@ -10,7 +10,7 @@
                 div.form-group
                         input.form-control(type='text' name="title" placeholder='Title' ng-model='newitinerary.title')
                 div.form-group
-                    input.form-control(type='text' name="place" placeholder='Place of travel' ng-model='newitinerary.place')
+                    input.form-control(type='text' name="place" placeholder='Place of travel' ng-model='newitinerary.place' g-places-autocomplete)
                 div.form-group
                         input.form-control(type='number' name='days' placeholder='No of days' ng-model='newitinerary.days')
                 div.form-group
@@ -21,6 +21,7 @@
                     button.btn.btn-success(ng-click='startAddingItinerary(newitinerary.days)')
                         span.glyphicon.glyphicon-plus &nbsp;
                         span Start adding itinerary
+
 
 #myModal.modal.fade(role='dialog')
     .modal-dialog
