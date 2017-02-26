@@ -1,8 +1,48 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+body, html {
+    height: 100%;
 }
 
-a {
-  color: #00B7FF;
+.parallax {
+    /* The image used */
+    background-image: url('../images/travel.jpg');
+
+    /* Full height */
+    height: 550px;
+
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center bottom;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.mid{
+  height:300px;
+  background-color :#000000;
+  opacity: 0.9;
+  font-size:30px;
+  color: #ffffff;
+  padding : 50px;
+}
+
+.content{
+
+  padding : 50px;
+}
+
+.nice-buttons{
+
+    background-color: #000000;
+    color : #ffffff;
+    border : none;
+    padding : 7px;
+    opacity: 0.7;
+    border-radius: 3px;
+    width : 150px;
+    margin : 5px;
+
+}
+
+.nice-font{
+  font-family: 'Sansita', sans-serif;
 }

@@ -1,6 +1,19 @@
 var controllers = angular.module('ghumante.controller', []);
 
-controllers.controller('loginController', ['$scope', '$auth', '$state', function($scope, $auth, $state) {
+controllers.controller('loginController', ['$scope', '$auth', '$state','$http', function($scope, $auth, $state,$http) {
+
+	var params  = {
+		type : 'school',
+		
+	}
+
+	$http
+		.get('http://localhost:4040/api/v1/feature/fetch',{params:params})
+		.success(function(res){
+			console.log(res)
+		})
+
+
 	$scope.authenticate = function(provider) {
 
 		$auth.authenticate(provider)
