@@ -9,9 +9,9 @@ class App extends React.Component {
                 <div className="parallax">
                      <div className="content">
 
-                        <div className="col-xs-offset-5 col-xs-6">
-                             <button className="nice-buttons">Login</button>
-                             <button className="nice-buttons">Sign Up</button>
+                        <div className=" col-xs-12">
+                             <button className="nice-buttons pull-right">Login</button>
+                             <button className="nice-buttons pull-right">Sign Up</button>
                         </div>
 
                     </div>
@@ -19,7 +19,7 @@ class App extends React.Component {
                 </div>
                     
                 <div className="mid">
-                    <div className="col-xs-offset-3 col-xs-5">
+                    <div className=" col-xs-offset-3 col-xs-5">
                         बाटो  <br/>
                         उकालो ,ओरालो <br/>
                         र तेर्सो जे भए पनि , <br/> 
@@ -27,10 +27,10 @@ class App extends React.Component {
 
                     </div>
 
-                    <div className="col-xs-2 nice-font">
+                    <div className="col-xs-2 nice-font ">
                         Yaatra
                         <br/>
-                            - An itenerary sharing platform.
+                            <span className="tagline"> An itenerary sharing platform.  </span> 
                     </div>
                     
                 </div>

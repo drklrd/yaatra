@@ -9549,15 +9549,15 @@ class App extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
                     { className: 'content' },
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                         'div',
-                        { className: 'col-xs-offset-5 col-xs-6' },
+                        { className: ' col-xs-12' },
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                             'button',
-                            { className: 'nice-buttons' },
+                            { className: 'nice-buttons pull-right' },
                             'Login'
                         ),
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                             'button',
-                            { className: 'nice-buttons' },
+                            { className: 'nice-buttons pull-right' },
                             'Sign Up'
                         )
                     )
@@ -9568,7 +9568,7 @@ class App extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
                 { className: 'mid' },
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                     'div',
-                    { className: 'col-xs-offset-3 col-xs-5' },
+                    { className: ' col-xs-offset-3 col-xs-5' },
                     '\u092C\u093E\u091F\u094B  ',
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('br', null),
                     '\u0909\u0915\u093E\u0932\u094B ,\u0913\u0930\u093E\u0932\u094B ',
@@ -9579,10 +9579,14 @@ class App extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
                 ),
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                     'div',
-                    { className: 'col-xs-2 nice-font' },
+                    { className: 'col-xs-2 nice-font ' },
                     'Yaatra',
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('br', null),
-                    '- An itenerary sharing platform.'
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        'span',
+                        { className: 'tagline' },
+                        ' An itenerary sharing platform.  '
+                    )
                 )
             ),
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div', { className: 'parallax' })
