@@ -28885,6 +28885,8 @@ __WEBPACK_IMPORTED_MODULE_1_react_dom___default.a.render(__WEBPACK_IMPORTED_MODU
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_dom___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react_dom__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_leaflet__ = __webpack_require__(415);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_leaflet___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_react_leaflet__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__side_bar__ = __webpack_require__(453);
+
 
 
 
@@ -28990,119 +28992,7 @@ class App extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
 			__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 				'div',
 				{ className: 'col-sm-3 side-bar' },
-				__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-					'div',
-					null,
-					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-						'div',
-						null,
-						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-							'div',
-							{ className: 'panel-heading' },
-							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-								'h4',
-								{ className: 'panel-title' },
-								'Add new itenerary',
-								__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-									'a',
-									{ className: 'pull-right', 'data-toggle': 'collapse', href: '#collapse1' },
-									' Toggle '
-								)
-							)
-						)
-					)
-				),
-				__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-					'div',
-					{ id: 'collapse1', className: 'panel-collapse collapse in' },
-					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('hr', null),
-					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-						'div',
-						{ className: 'row row-spacing ' },
-						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-							'div',
-							{ className: 'col-xs-4' },
-							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-								'span',
-								null,
-								' Place of visit '
-							)
-						),
-						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-							'div',
-							{ className: 'col-xs-8' },
-							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { type: 'text', placeholder: 'Place of visit', className: 'form-control' })
-						)
-					),
-					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-						'div',
-						{ className: 'row row-spacing ' },
-						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-							'div',
-							{ className: 'col-xs-4' },
-							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-								'span',
-								null,
-								' Start Date '
-							)
-						),
-						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-							'div',
-							{ className: 'col-xs-8' },
-							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { type: 'date', placeholder: 'Start Date', className: 'form-control' })
-						)
-					),
-					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-						'div',
-						{ className: 'row row-spacing ' },
-						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-							'div',
-							{ className: 'col-xs-4' },
-							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-								'span',
-								null,
-								' End Date '
-							)
-						),
-						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-							'div',
-							{ className: 'col-xs-8' },
-							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { type: 'date', placeholder: 'Start Date', className: 'form-control' })
-						)
-					),
-					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-						'div',
-						{ className: 'row row-spacing ' },
-						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-							'div',
-							{ className: 'col-xs-4' },
-							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-								'span',
-								null,
-								' Any Notes '
-							)
-						),
-						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-							'div',
-							{ className: 'col-xs-8' },
-							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('textarea', { placeholder: 'You can write any notes here.', className: 'form-control' })
-						)
-					),
-					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-						'div',
-						{ className: 'row row-spacing ' },
-						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-							'div',
-							{ className: 'col-xs-offset-4' },
-							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-								'button',
-								{ className: 'btn btn-primary' },
-								'  Start Adding Itenerary '
-							)
-						)
-					),
-					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('br', null)
-				)
+				__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__side_bar__["a" /* default */], null)
 			)
 		);
 	}
@@ -50684,6 +50574,142 @@ module.exports = g;
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__(189);
+
+
+/***/ }),
+/* 453 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+
+
+class Sidebar extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
+
+	render() {
+
+		return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+			"div",
+			null,
+			__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+				"div",
+				null,
+				__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+					"div",
+					null,
+					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+						"div",
+						{ className: "panel-heading" },
+						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+							"h4",
+							{ className: "panel-title" },
+							"Add new itenerary",
+							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+								"a",
+								{ className: "pull-right", "data-toggle": "collapse", href: "#collapse1" },
+								" Toggle "
+							)
+						)
+					)
+				)
+			),
+			__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+				"div",
+				{ id: "collapse1", className: "panel-collapse collapse in" },
+				__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("hr", null),
+				__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+					"div",
+					{ className: "row row-spacing " },
+					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+						"div",
+						{ className: "col-xs-4" },
+						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+							"span",
+							null,
+							" Place of visit "
+						)
+					),
+					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+						"div",
+						{ className: "col-xs-8" },
+						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", { type: "text", placeholder: "Place of visit", className: "form-control" })
+					)
+				),
+				__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+					"div",
+					{ className: "row row-spacing " },
+					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+						"div",
+						{ className: "col-xs-4" },
+						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+							"span",
+							null,
+							" Start Date "
+						)
+					),
+					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+						"div",
+						{ className: "col-xs-8" },
+						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", { type: "date", placeholder: "Start Date", className: "form-control" })
+					)
+				),
+				__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+					"div",
+					{ className: "row row-spacing " },
+					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+						"div",
+						{ className: "col-xs-4" },
+						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+							"span",
+							null,
+							" End Date "
+						)
+					),
+					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+						"div",
+						{ className: "col-xs-8" },
+						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", { type: "date", placeholder: "Start Date", className: "form-control" })
+					)
+				),
+				__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+					"div",
+					{ className: "row row-spacing " },
+					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+						"div",
+						{ className: "col-xs-4" },
+						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+							"span",
+							null,
+							" Any Notes "
+						)
+					),
+					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+						"div",
+						{ className: "col-xs-8" },
+						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("textarea", { placeholder: "You can write any notes here.", className: "form-control" })
+					)
+				),
+				__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+					"div",
+					{ className: "row row-spacing " },
+					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+						"div",
+						{ className: "col-xs-offset-4" },
+						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+							"button",
+							{ className: "btn btn-primary" },
+							"  Start Adding Itenerary "
+						)
+					)
+				),
+				__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("br", null)
+			)
+		);
+	}
+
+}
+/* harmony export (immutable) */ __webpack_exports__["a"] = Sidebar;
 
 
 /***/ })
