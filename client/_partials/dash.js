@@ -36,7 +36,7 @@ export default class App extends React.Component {
 						</div>
 					</div>
 				</nav>
-				
+
 				<div className="col-xs-12 col-sm-12">
 					<MapView position={this.state.position} />
 				</div>

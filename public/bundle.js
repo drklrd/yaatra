@@ -29066,9 +29066,7 @@ class App extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
 
 
 class MapView extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
-
 	render() {
-
 		return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 			__WEBPACK_IMPORTED_MODULE_1_react_leaflet__["Map"],
 			{ center: [27.7172, 85.3240], zoom: 13 },
@@ -29093,7 +29091,6 @@ class MapView extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
 			)
 		);
 	}
-
 }
 /* harmony export (immutable) */ __webpack_exports__["a"] = MapView;
 
@@ -29108,6 +29105,20 @@ class MapView extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
 
 
 class Sidebar extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
+
+	constructor(props) {
+		super(props);
+		this.state = {
+			opened: true
+		};
+	}
+
+	toggleSideBar() {
+		var barStatus = this.state.opened;
+		this.setState({
+			opened: !barStatus
+		});
+	}
 
 	render() {
 
@@ -29126,11 +29137,13 @@ class Sidebar extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
 						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 							"h4",
 							{ className: "panel-title" },
-							"Add new itenerary",
+							"Add itenerary",
 							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 								"a",
-								{ className: "pull-right", "data-toggle": "collapse", href: "#collapse1" },
-								" Toggle "
+								{ className: "pull-right", onClick: this.toggleSideBar.bind(this), "data-toggle": "collapse", href: "#collapse1" },
+								" ",
+								__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("span", { className: this.state.opened ? "glyphicon glyphicon-chevron-up" : "glyphicon glyphicon-chevron-down" }),
+								" "
 							)
 						)
 					)

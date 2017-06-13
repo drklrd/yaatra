@@ -2,6 +2,20 @@ import React from 'react';
 
 export default class Sidebar extends React.Component {
 
+	constructor(props){
+		super(props);
+		this.state = {
+			opened : true
+		}
+	}
+
+	toggleSideBar(){
+		var barStatus = this.state.opened;
+		this.setState({
+			opened : !barStatus
+		})
+	}
+
 	render(){
 
 		return (
@@ -10,8 +24,8 @@ export default class Sidebar extends React.Component {
 					<div>
 						<div className="panel-heading">
 							<h4 className="panel-title"> 
-								Add new itenerary 
-								<a className="pull-right"  data-toggle="collapse" href="#collapse1"> Toggle </a>
+								Add itenerary 
+								<a className="pull-right"  onClick={this.toggleSideBar.bind(this)} data-toggle="collapse" href="#collapse1"> <span className={ this.state.opened ? "glyphicon glyphicon-chevron-up" : "glyphicon glyphicon-chevron-down" }></span> </a>
 							</h4>
 						</div>
 					</div>
