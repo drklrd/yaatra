@@ -55,3 +55,29 @@ body, html {
 .tagline{
   font-size: 18px;
 }
+
+
+.banner {
+  border-radius: 0px !important;
+}
+
+.leaflet-container { 
+  margin-top: 9vh;
+  height: 90vh; 
+}
+
+.leaflet-tile-pane {
+  -webkit-filter: grayscale(100%);
+  filter: grayscale(100%);
+}
+
+.side-bar{
+  position: absolute;
+  right : 1%;
+  margin-top: 9vh;
+  background-color: #000000;
+  min-height: 500px;
+  z-index : 1000;
+  opacity: 0.8;
+  color : #ffffff;
+}
