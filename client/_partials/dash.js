@@ -1,36 +1,21 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Map, Marker, Popup, TileLayer } from 'react-leaflet';
 import Sidebar from './side_bar';
-
+import MapView from './map';
 export default class App extends React.Component {
 
 	constructor(props){
 		super(props);
 		this.state = {
-			map : null
+			position : [27.7172, 85.3240]
 		}
 	}
 
 	componentWillMount() {
-		const position = [27.7172, 85.3240];
-		const map = this.state.map = (
-		  <Map center={position} zoom={13}>
-		    <TileLayer
-		      url='http://{s}.tile.osm.org/{z}/{x}/{y}.png'
-		      attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-		    />
-		    <Marker position={position}>
-		      <Popup>
-		        <span>A pretty CSS3 popup.<br/>Easily customizable.</span>
-		      </Popup>
-		    </Marker>
-		  </Map>
-		);
+
 	}
 
 	render() {
-		
 		return (
 			<div>
 				<nav className="navbar navbar-inverse banner navbar-fixed-top">
@@ -51,17 +36,14 @@ export default class App extends React.Component {
 						</div>
 					</div>
 				</nav>
-
+				
 				<div className="col-xs-12 col-sm-12">
-					{this.state.map}
+					<MapView position={this.state.position} />
 				</div>
 
 				<div className="col-sm-3 side-bar">
-					
 					<Sidebar/>
-					
 				</div>
-		
 			</div>
 		)
 	}

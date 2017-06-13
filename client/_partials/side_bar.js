@@ -5,9 +5,7 @@ export default class Sidebar extends React.Component {
 	render(){
 
 		return (
-
 			<div>
-
 				<div>
 					<div>
 						<div className="panel-heading">
@@ -17,11 +15,8 @@ export default class Sidebar extends React.Component {
 							</h4>
 						</div>
 					</div>
-
 				</div>
-
 				<div id="collapse1" className="panel-collapse collapse in">
-
 					<hr/>
 					<div className="row row-spacing ">
 						<div className="col-xs-4">
@@ -61,12 +56,8 @@ export default class Sidebar extends React.Component {
 						</div>
 					</div>
 					<br/>
-
 				</div>
-
-
 			</div>
-
 		);
 	}
 
