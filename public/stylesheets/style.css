@@ -62,8 +62,8 @@ body, html {
 }
 
 .leaflet-container { 
-  margin-top: 9vh;
-  height: 90vh; 
+  /*margin-top: 9vh;*/
+  height: 99vh; 
 }
 
 .leaflet-tile-pane {
@@ -76,8 +76,13 @@ body, html {
   right : 1%;
   margin-top: 9vh;
   background-color: #000000;
-  min-height: 500px;
+  /*min-height: 500px;*/
+  height : auto;
   z-index : 1000;
   opacity: 0.8;
   color : #ffffff;
+}
+
+.row-spacing {
+  margin-top:18px;
 }
