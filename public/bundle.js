@@ -29103,6 +29103,8 @@ class MapView extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__side_bar_form__ = __webpack_require__(455);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__side_bar_add_itenerary__ = __webpack_require__(456);
+
 
 
 
@@ -29129,7 +29131,6 @@ class Sidebar extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
 	}
 
 	render() {
-
 		return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 			'div',
 			null,
@@ -29161,12 +29162,11 @@ class Sidebar extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
 				'div',
 				{ id: 'collapse1', className: 'panel-collapse collapse in' },
 				__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('hr', null),
-				__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__side_bar_form__["a" /* default */], null),
+				__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__side_bar_add_itenerary__["a" /* default */], null),
 				__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('br', null)
 			)
 		);
 	}
-
 }
 /* harmony export (immutable) */ __webpack_exports__["a"] = Sidebar;
 
@@ -50678,7 +50678,6 @@ module.exports = __webpack_require__(189);
 class SideBarForm extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
 
 	render() {
-
 		return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 			"form",
 			{ name: "iteneray-form", onSubmit: this.startAddingItenerary },
@@ -50770,7 +50769,180 @@ class SideBarForm extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Componen
 		);
 	}
 }
-/* harmony export (immutable) */ __webpack_exports__["a"] = SideBarForm;
+/* unused harmony export default */
+
+
+/***/ }),
+/* 456 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+
+
+class SideBarAddItenerary extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
+
+	constructor() {
+		super();
+		this.state = {
+			days: 5,
+			currentDay: 1,
+			dayObj: []
+		};
+		this.nextDay = this.nextDay.bind(this);
+		this.previousDay = this.previousDay.bind(this);
+	}
+
+	clearForm(currentDay) {
+		var fields = ['startplace_', 'endplace_', 'time_'];
+		fields.forEach(field => {
+			this.refs[`${field + currentDay}`].value = null;
+		});
+	}
+
+	previousDay() {
+		if (this.state.currentDay > 1) {
+			var newDay = this.state.currentDay - 1;
+			var dayObj = this.state.dayObj;
+			var exits = undefined;
+			for (var day = 0; day < dayObj.length; day++) {
+				if (dayObj[day].currentDay === newDay) {
+					exits = day;
+					break;
+				}
+			}
+			if (exits) {
+				this.refs['startplace_' + this.state.currentDay].value = dayObj[exits].startplace;
+				this.refs['endplace_' + this.state.currentDay].value = dayObj[exits].endplace;
+				this.refs['time_' + this.state.currentDay].value = dayObj[exits].time;
+			}
+
+			this.setState({
+				currentDay: newDay
+			});
+		}
+	}
+
+	nextDay() {
+		if (this.state.currentDay <= this.state.days) {
+			var dayObj = this.state.dayObj;
+			var newDay = this.state.currentDay + 1;
+			var exits = undefined;
+			for (var day = 0; day < dayObj.length; day++) {
+				if (dayObj[day].currentDay === newDay) {
+					exits = day;
+					break;
+				}
+			}
+
+			if (exits) {
+				dayObj[this.state.currentDay] = dayObj[exits];
+			} else {
+
+				dayObj.push({
+					currentDay: this.state.currentDay,
+					startplace: this.refs['startplace_' + this.state.currentDay].value,
+					endplace: this.refs['endplace_' + this.state.currentDay].value,
+					time: this.refs['time_' + this.state.currentDay].value
+				});
+			}
+
+			this.clearForm(this.state.currentDay);
+
+			this.setState({
+				currentDay: newDay,
+				dayObj: dayObj
+			});
+		} else {
+			console.log(this.state.dayObj);
+		}
+	}
+
+	render() {
+		return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+			'div',
+			null,
+			__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+				'strong',
+				null,
+				'Day ',
+				this.state.currentDay
+			),
+			__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+				'div',
+				{ className: 'row row-spacing ' },
+				__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+					'div',
+					{ className: 'col-xs-4' },
+					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+						'span',
+						null,
+						' Start Point '
+					)
+				),
+				__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+					'div',
+					{ className: 'col-xs-8' },
+					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { ref: "startplace_" + this.state.currentDay, type: 'text', placeholder: 'Name of starting place', className: 'form-control', required: true })
+				)
+			),
+			__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+				'div',
+				{ className: 'row row-spacing ' },
+				__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+					'div',
+					{ className: 'col-xs-4' },
+					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+						'span',
+						null,
+						' End Point '
+					)
+				),
+				__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+					'div',
+					{ className: 'col-xs-8' },
+					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { ref: "endplace_" + this.state.currentDay, type: 'text', placeholder: 'Name of ending place', className: 'form-control', required: true })
+				)
+			),
+			__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+				'div',
+				{ className: 'row row-spacing ' },
+				__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+					'div',
+					{ className: 'col-xs-4' },
+					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+						'span',
+						null,
+						' Total time (in hours) '
+					)
+				),
+				__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+					'div',
+					{ className: 'col-xs-8' },
+					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { ref: "time_" + this.state.currentDay, type: 'text', placeholder: 'Total time', className: 'form-control', required: true })
+				)
+			),
+			__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('br', null),
+			__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+				'div',
+				{ className: 'row row-margin' },
+				__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+					'div',
+					{ className: 'pull-left' },
+					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('a', { className: 'glyphicon glyphicon-menu-left', onClick: this.previousDay })
+				),
+				__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+					'div',
+					{ className: 'pull-right' },
+					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('a', { className: 'glyphicon glyphicon-menu-right', onClick: this.nextDay })
+				)
+			)
+		);
+	}
+
+}
+/* harmony export (immutable) */ __webpack_exports__["a"] = SideBarAddItenerary;
 
 
 /***/ })

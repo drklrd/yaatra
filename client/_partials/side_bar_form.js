@@ -3,7 +3,6 @@ import React from 'react';
 export default class SideBarForm extends React.Component{
 
 	render(){
-
 		return(
 			<form name="iteneray-form" onSubmit={this.startAddingItenerary}>
 				<div className="row row-spacing ">

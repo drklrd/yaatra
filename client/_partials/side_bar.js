@@ -1,5 +1,6 @@
 import React from 'react';
 import SideBarForm from './side_bar_form';
+import SideBarAdd from './side_bar_add_itenerary';
 
 export default class Sidebar extends React.Component {
 
@@ -25,7 +26,6 @@ export default class Sidebar extends React.Component {
 	}
 
 	render(){
-
 		return (
 			<div>
 				<div>
@@ -40,11 +40,10 @@ export default class Sidebar extends React.Component {
 				</div>
 				<div id="collapse1" className="panel-collapse collapse in">
 					<hr/>
-					<SideBarForm/>
+					<SideBarAdd/>
 					<br/>
 				</div>
 			</div>
 		);
 	}
-
 }

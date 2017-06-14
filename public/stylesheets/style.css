@@ -86,3 +86,7 @@ body, html {
 .row-spacing {
   margin-top:18px;
 }
+
+.row-margin{
+  margin : 5px;
+}
