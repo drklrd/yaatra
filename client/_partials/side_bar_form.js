@@ -21,8 +21,8 @@ export default class SideBarForm extends React.Component{
 	handleFormSubmit(){
 		this.props.submitAction({
 			placeOfVisit : this.refs['place-of-visit'].value,
-			startDate : this.refs['start-date'].refs.input.value,
-			endDate : this.refs['end-date'].refs.input.value,
+			startDate : moment(this.state.startdate).format('YYYY-MM-DD'),
+			endDate : moment(this.state.enddate).format('YYYY-MM-DD'),
 			notes : this.refs['notes'].value
 		});
 	}
@@ -43,7 +43,7 @@ export default class SideBarForm extends React.Component{
 						<span> Start Date </span>
 					</div>
 					<div className="col-xs-8">
-						<DatePicker ref="start-date" selected={this.state.startdate} placeholderText="Start Date" className="form-control" onChange={(date)=>this.handleChange('startDate',date)} required />
+						<DatePicker maxDate={this.state.enddate && moment(this.state.enddate)} ref="start-date" selected={this.state.startdate} placeholderText="Start Date" className="form-control" onChange={(date)=>this.handleChange('startDate',date)} required />
 					</div>
 				</div>
 				<div className="row row-spacing ">
@@ -51,7 +51,7 @@ export default class SideBarForm extends React.Component{
 						<span> End Date </span>
 					</div>
 					<div className="col-xs-8">
-						<DatePicker ref="end-date" selected={this.state.enddate} placeholderText="End Date" className="form-control" onChange={(date)=>this.handleChange('endDate',date)} required />
+						<DatePicker  minDate={this.state.startdate && moment(this.state.startdate)} ref="end-date" selected={this.state.enddate} placeholderText="End Date" className="form-control" onChange={(date)=>this.handleChange('endDate',date)} required />
 					</div>
 				</div>
 				<div className="row row-spacing ">

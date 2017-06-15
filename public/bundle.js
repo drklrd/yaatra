@@ -29379,8 +29379,8 @@ class SideBarForm extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Componen
 	handleFormSubmit() {
 		this.props.submitAction({
 			placeOfVisit: this.refs['place-of-visit'].value,
-			startDate: this.refs['start-date'].refs.input.value,
-			endDate: this.refs['end-date'].refs.input.value,
+			startDate: __WEBPACK_IMPORTED_MODULE_2_moment___default()(this.state.startdate).format('YYYY-MM-DD'),
+			endDate: __WEBPACK_IMPORTED_MODULE_2_moment___default()(this.state.enddate).format('YYYY-MM-DD'),
 			notes: this.refs['notes'].value
 		});
 	}
@@ -29422,7 +29422,7 @@ class SideBarForm extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Componen
 				__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 					'div',
 					{ className: 'col-xs-8' },
-					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_datepicker___default.a, { ref: 'start-date', selected: this.state.startdate, placeholderText: 'Start Date', className: 'form-control', onChange: date => this.handleChange('startDate', date), required: true })
+					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_datepicker___default.a, { maxDate: this.state.enddate && __WEBPACK_IMPORTED_MODULE_2_moment___default()(this.state.enddate), ref: 'start-date', selected: this.state.startdate, placeholderText: 'Start Date', className: 'form-control', onChange: date => this.handleChange('startDate', date), required: true })
 				)
 			),
 			__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
@@ -29440,7 +29440,7 @@ class SideBarForm extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Componen
 				__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 					'div',
 					{ className: 'col-xs-8' },
-					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_datepicker___default.a, { ref: 'end-date', selected: this.state.enddate, placeholderText: 'End Date', className: 'form-control', onChange: date => this.handleChange('endDate', date), required: true })
+					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_datepicker___default.a, { minDate: this.state.startdate && __WEBPACK_IMPORTED_MODULE_2_moment___default()(this.state.startdate), ref: 'end-date', selected: this.state.enddate, placeholderText: 'End Date', className: 'form-control', onChange: date => this.handleChange('endDate', date), required: true })
 				)
 			),
 			__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
