@@ -7,7 +7,8 @@ export default class Sidebar extends React.Component {
 	constructor(props){
 		super(props);
 		this.state = {
-			opened : true
+			opened : true,
+			sideBarElement : 'form'
 		}
 		this.toggleSideBar = this.toggleSideBar.bind(this);
 		this.startAddingItenerary = this.startAddingItenerary.bind(this);
@@ -22,6 +23,9 @@ export default class Sidebar extends React.Component {
 
 	startAddingItenerary(){
 		console.log(this.refs);
+		this.setState({
+			sideBarElement : 'add'
+		})
 
 	}
 
@@ -40,7 +44,8 @@ export default class Sidebar extends React.Component {
 				</div>
 				<div id="collapse1" className="panel-collapse collapse in">
 					<hr/>
-					<SideBarAdd/>
+					{this.state.sideBarElement === 'form' &&  <SideBarForm submitAction={this.startAddingItenerary.bind(this)} />}
+					{this.state.sideBarElement === 'add' &&  <SideBarAdd/>}
 					<br/>
 				</div>
 			</div>

@@ -29113,7 +29113,8 @@ class Sidebar extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			opened: true
+			opened: true,
+			sideBarElement: 'form'
 		};
 		this.toggleSideBar = this.toggleSideBar.bind(this);
 		this.startAddingItenerary = this.startAddingItenerary.bind(this);
@@ -29128,6 +29129,9 @@ class Sidebar extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
 
 	startAddingItenerary() {
 		console.log(this.refs);
+		this.setState({
+			sideBarElement: 'add'
+		});
 	}
 
 	render() {
@@ -29162,7 +29166,8 @@ class Sidebar extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
 				'div',
 				{ id: 'collapse1', className: 'panel-collapse collapse in' },
 				__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('hr', null),
-				__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__side_bar_add_itenerary__["a" /* default */], null),
+				this.state.sideBarElement === 'form' && __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__side_bar_form__["a" /* default */], { submitAction: this.startAddingItenerary.bind(this) }),
+				this.state.sideBarElement === 'add' && __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__side_bar_add_itenerary__["a" /* default */], null),
 				__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('br', null)
 			)
 		);
@@ -29354,7 +29359,7 @@ class SideBarForm extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Componen
 	render() {
 		return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 			"form",
-			{ name: "iteneray-form", onSubmit: this.startAddingItenerary },
+			{ name: "iteneray-form", onSubmit: this.props.submitAction },
 			__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 				"div",
 				{ className: "row row-spacing " },
@@ -29443,7 +29448,7 @@ class SideBarForm extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Componen
 		);
 	}
 }
-/* unused harmony export default */
+/* harmony export (immutable) */ __webpack_exports__["a"] = SideBarForm;
 
 
 /***/ }),

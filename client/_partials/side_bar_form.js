@@ -4,7 +4,7 @@ export default class SideBarForm extends React.Component{
 
 	render(){
 		return(
-			<form name="iteneray-form" onSubmit={this.startAddingItenerary}>
+			<form name="iteneray-form" onSubmit={this.props.submitAction}>
 				<div className="row row-spacing ">
 					<div className="col-xs-4">
 						<span> Place of visit </span>
