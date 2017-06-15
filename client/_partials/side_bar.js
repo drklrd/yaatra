@@ -36,8 +36,8 @@ export default class Sidebar extends React.Component {
 					<div>
 						<div className="panel-heading">
 							<h4 className="panel-title"> 
-								Add itenerary 
-								<a className="pull-right"  onClick={this.toggleSideBar} data-toggle="collapse" href="#collapse1"> <span className={ this.state.opened ? "glyphicon glyphicon-chevron-up" : "glyphicon glyphicon-chevron-down" }></span> </a>
+								Add itenerary &nbsp;
+								<a className="pull-right"  onClick={this.toggleSideBar} data-toggle="collapse" href="#collapse1"> <span className={ this.state.opened ? "glyphicon glyphicon-chevron-up" : "glyphicon glyphicon-chevron-down blink" }></span> </a>
 							</h4>
 						</div>
 					</div>

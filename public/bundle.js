@@ -29150,12 +29150,12 @@ class Sidebar extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
 						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 							'h4',
 							{ className: 'panel-title' },
-							'Add itenerary',
+							'Add itenerary \xA0',
 							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 								'a',
 								{ className: 'pull-right', onClick: this.toggleSideBar, 'data-toggle': 'collapse', href: '#collapse1' },
 								' ',
-								__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('span', { className: this.state.opened ? "glyphicon glyphicon-chevron-up" : "glyphicon glyphicon-chevron-down" }),
+								__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('span', { className: this.state.opened ? "glyphicon glyphicon-chevron-up" : "glyphicon glyphicon-chevron-down blink" }),
 								' '
 							)
 						)
