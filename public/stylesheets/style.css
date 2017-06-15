@@ -90,3 +90,15 @@ body, html {
 .row-margin{
   margin : 5px;
 }
+
+.pointer-cursor{
+  cursor: pointer;
+}
+
+.blink {
+  animation: blinker 1s linear infinite;
+}
+
+@keyframes blinker {  
+  50% { opacity: 0; }
+}

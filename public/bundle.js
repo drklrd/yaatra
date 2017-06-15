@@ -29211,7 +29211,7 @@ class SideBarAddItenerary extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.
 
 	changeDay(nextOrPrevious) {
 
-		if (nextOrPrevious === 'next' && this.state.currentDay <= this.state.days || nextOrPrevious === 'previous' && this.state.currentDay > 1) {
+		if (nextOrPrevious === 'next' && this.state.currentDay < this.state.days || nextOrPrevious === 'previous' && this.state.currentDay > 1) {
 			var fromDay = this.state.currentDay;
 			var toDay = nextOrPrevious === 'next' ? this.state.currentDay + 1 : this.state.currentDay - 1;
 			var dayObj = this.state.dayObj;
@@ -29238,7 +29238,12 @@ class SideBarAddItenerary extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.
 
 			this.setState({
 				currentDay: toDay,
-				dayObj: dayObj
+				dayObj: dayObj,
+				blink: false
+			});
+		} else {
+			this.setState({
+				blink: true
 			});
 		}
 	}
@@ -29248,8 +29253,8 @@ class SideBarAddItenerary extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.
 			'div',
 			null,
 			__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-				'strong',
-				null,
+				'h3',
+				{ className: this.state.blink ? "blink" : "" },
 				'Day ',
 				this.state.currentDay
 			),
@@ -29258,17 +29263,19 @@ class SideBarAddItenerary extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.
 				{ className: 'row row-spacing ' },
 				__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 					'div',
-					{ className: 'col-xs-4' },
+					{ className: 'col-xs-5' },
 					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 						'span',
 						null,
-						' Start Point '
+						' ',
+						"Starting Point for the day ",
+						' '
 					)
 				),
 				__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 					'div',
-					{ className: 'col-xs-8' },
-					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { ref: "startplace_" + this.state.currentDay, type: 'text', placeholder: 'Name of starting place', className: 'form-control', required: true })
+					{ className: 'col-xs-7' },
+					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { ref: "startplace_" + this.state.currentDay, type: 'text', placeholder: "Starting Point", className: 'form-control', required: true })
 				)
 			),
 			__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
@@ -29276,17 +29283,19 @@ class SideBarAddItenerary extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.
 				{ className: 'row row-spacing ' },
 				__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 					'div',
-					{ className: 'col-xs-4' },
+					{ className: 'col-xs-5' },
 					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 						'span',
 						null,
-						' End Point '
+						' ',
+						"Resting Point for the day ",
+						' '
 					)
 				),
 				__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 					'div',
-					{ className: 'col-xs-8' },
-					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { ref: "endplace_" + this.state.currentDay, type: 'text', placeholder: 'Name of ending place', className: 'form-control', required: true })
+					{ className: 'col-xs-7' },
+					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { ref: "endplace_" + this.state.currentDay, type: 'text', placeholder: "Resting Point", className: 'form-control', required: true })
 				)
 			),
 			__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
@@ -29294,17 +29303,19 @@ class SideBarAddItenerary extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.
 				{ className: 'row row-spacing ' },
 				__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 					'div',
-					{ className: 'col-xs-4' },
+					{ className: 'col-xs-5' },
 					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 						'span',
 						null,
-						' Total time (in hours) '
+						' ',
+						"Total time for the day ",
+						' (in hours) '
 					)
 				),
 				__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 					'div',
-					{ className: 'col-xs-8' },
-					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { ref: "time_" + this.state.currentDay, type: 'text', placeholder: 'Total time', className: 'form-control', required: true })
+					{ className: 'col-xs-7' },
+					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { ref: "time_" + this.state.currentDay, type: 'text', placeholder: "Total time", className: 'form-control', required: true })
 				)
 			),
 			__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('br', null),
@@ -29314,12 +29325,12 @@ class SideBarAddItenerary extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.
 				__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 					'div',
 					{ className: 'pull-left' },
-					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('a', { className: 'glyphicon glyphicon-menu-left', onClick: this.changeDay.bind(this, 'previous') })
+					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('a', { className: 'glyphicon glyphicon-menu-left pointer-cursor', onClick: this.changeDay.bind(this, 'previous') })
 				),
 				__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 					'div',
 					{ className: 'pull-right' },
-					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('a', { className: 'glyphicon glyphicon-menu-right', onClick: this.changeDay.bind(this, 'next') })
+					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('a', { className: 'glyphicon glyphicon-menu-right pointer-cursor', onClick: this.changeDay.bind(this, 'next') })
 				)
 			)
 		);

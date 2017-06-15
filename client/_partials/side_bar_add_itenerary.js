@@ -31,7 +31,7 @@ export default class SideBarAddItenerary extends React.Component {
 
 	changeDay(nextOrPrevious) {
 
-		if ((nextOrPrevious === 'next' && this.state.currentDay <= this.state.days) || (nextOrPrevious === 'previous' && this.state.currentDay > 1)) {
+		if ((nextOrPrevious === 'next' && this.state.currentDay < this.state.days) || (nextOrPrevious === 'previous' && this.state.currentDay > 1)) {
 			var fromDay = this.state.currentDay;
 			var toDay = nextOrPrevious === 'next' ? this.state.currentDay + 1 : this.state.currentDay - 1;
 			var dayObj = this.state.dayObj;
@@ -58,8 +58,13 @@ export default class SideBarAddItenerary extends React.Component {
 
 			this.setState({
 				currentDay: toDay,
-				dayObj: dayObj
+				dayObj: dayObj,
+				blink : false
 			});
+		}else{
+			this.setState({
+				blink : true
+			})
 		}
 	}
 
@@ -67,31 +72,31 @@ export default class SideBarAddItenerary extends React.Component {
 	render() {
 		return(
 			<div>
-				<strong>Day {this.state.currentDay}</strong>
+				<h3 className={this.state.blink ? "blink" : ""}>Day {this.state.currentDay}</h3>
 				<div className="row row-spacing ">
-					<div className="col-xs-4">
-						<span> Start Point </span>
+					<div className="col-xs-5">
+						<span> {"Starting Point for the day "} </span>
 					</div>
-					<div className="col-xs-8">
-						<input ref={"startplace_"+this.state.currentDay} type="text" placeholder="Name of starting place" className="form-control" required/>
+					<div className="col-xs-7">
+						<input ref={"startplace_"+this.state.currentDay} type="text" placeholder={"Starting Point"} className="form-control" required/>
 					</div>
 				</div>
 
 				<div className="row row-spacing ">
-					<div className="col-xs-4">
-						<span> End Point </span>
+					<div className="col-xs-5">
+						<span> {"Resting Point for the day "} </span>
 					</div>
-					<div className="col-xs-8">
-						<input ref={"endplace_"+this.state.currentDay} type="text" placeholder="Name of ending place" className="form-control" required/>
+					<div className="col-xs-7">
+						<input ref={"endplace_"+this.state.currentDay} type="text" placeholder={"Resting Point"} className="form-control" required/>
 					</div>
 				</div>
 
 				<div className="row row-spacing ">
-					<div className="col-xs-4">
-						<span> Total time (in hours) </span>
+					<div className="col-xs-5">
+						<span> {"Total time for the day "} (in hours) </span>
 					</div>
-					<div className="col-xs-8">
-						<input ref={"time_"+this.state.currentDay} type="text" placeholder="Total time" className="form-control" required/>
+					<div className="col-xs-7">
+						<input ref={"time_"+this.state.currentDay} type="text" placeholder={"Total time"} className="form-control" required/>
 					</div>
 				</div>
 
@@ -101,12 +106,12 @@ export default class SideBarAddItenerary extends React.Component {
 				<div className="row row-margin">
 
 					<div className="pull-left">
-						<a className="glyphicon glyphicon-menu-left" onClick={this.changeDay.bind(this,'previous')}></a> 
+						<a className="glyphicon glyphicon-menu-left pointer-cursor" onClick={this.changeDay.bind(this,'previous')}></a> 
 						 
 					</div>
 
 					<div className="pull-right">
-						<a className="glyphicon glyphicon-menu-right" onClick={this.changeDay.bind(this,'next')} ></a> 
+						<a className="glyphicon glyphicon-menu-right pointer-cursor" onClick={this.changeDay.bind(this,'next')} ></a> 
 					</div>
 
 				</div>
