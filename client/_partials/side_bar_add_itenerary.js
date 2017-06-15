@@ -1,84 +1,70 @@
 import React from 'react';
 
-export default class SideBarAddItenerary extends React.Component{
+export default class SideBarAddItenerary extends React.Component {
 
-	constructor(){
+	constructor() {
 		super();
 		this.state = {
-			days : 5,
-			currentDay : 1,
-			dayObj : []
+			days: 5,
+			currentDay: 1,
+			dayObj: []
 		};
-		this.nextDay = this.nextDay.bind(this);
-		this.previousDay = this.previousDay.bind(this);
 	}
 
-	clearForm(currentDay){
-		var fields = ['startplace_','endplace_','time_'];
-		fields.forEach((field)=>{
+	clearForm(currentDay) {
+		var fields = ['startplace_', 'endplace_', 'time_'];
+		fields.forEach((field) => {
 			this.refs[`${field+currentDay}`].value = null;
 		});
 	}
 
-	previousDay(){
-		if(this.state.currentDay > 1){
-			var newDay = this.state.currentDay - 1;
-			var dayObj = this.state.dayObj;
-			var exits = undefined;
-			for(var day=0;day<dayObj.length;day++){
-				if(dayObj[day].currentDay === newDay){
-					exits = day;
-					break;
-				}
+	doDayExists(dayObj, checkAgainst) {
+		var exits = undefined;
+		for (var day = 0; day < dayObj.length; day++) {
+			if (dayObj[day].currentDay === checkAgainst) {
+				exits = day;
+				break;
 			}
-			if(exits){
-				this.refs['startplace_'+this.state.currentDay].value = dayObj[exits].startplace;
-				this.refs['endplace_'+this.state.currentDay].value = dayObj[exits].endplace;
-				this.refs['time_'+this.state.currentDay].value = dayObj[exits].time;
+		}
+		return exits;
+	}
+
+	changeDay(nextOrPrevious) {
+
+		if ((nextOrPrevious === 'next' && this.state.currentDay <= this.state.days) || (nextOrPrevious === 'previous' && this.state.currentDay > 1)) {
+			var fromDay = this.state.currentDay;
+			var toDay = nextOrPrevious === 'next' ? this.state.currentDay + 1 : this.state.currentDay - 1;
+			var dayObj = this.state.dayObj;
+			var currentvalue = {
+				currentDay: this.state.currentDay,
+				startplace: this.refs['startplace_' + fromDay].value,
+				endplace: this.refs['endplace_' + fromDay].value,
+				time: this.refs['time_' + fromDay].value
+			};
+			var fromDayExists = this.doDayExists(dayObj, fromDay);
+			if (fromDayExists !== undefined) {
+				dayObj[fromDayExists] = currentvalue;
+			} else {
+				dayObj.push(currentvalue);
+			}
+			var toDayExists = this.doDayExists(dayObj, toDay);
+			if (toDayExists !== undefined) {
+				this.refs['startplace_' + fromDay].value = dayObj[toDayExists].startplace;
+				this.refs['endplace_' + fromDay].value = dayObj[toDayExists].endplace;
+				this.refs['time_' + fromDay].value = dayObj[toDayExists].time;
+			} else {
+				this.clearForm(fromDay);
 			}
 
 			this.setState({
-				currentDay : newDay
+				currentDay: toDay,
+				dayObj: dayObj
 			});
 		}
 	}
 
-	nextDay(){
-		if(this.state.currentDay <= this.state.days){
-			var dayObj = this.state.dayObj;
-			var newDay = this.state.currentDay + 1;
-			var exits = undefined;
-			for(var day=0;day<dayObj.length;day++){
-				if(dayObj[day].currentDay === newDay){
-					exits = day;
-					break;
-				}
-			}
 
-			if(exits){
-				dayObj[this.state.currentDay] = dayObj[exits];
-			}else{
-
-				dayObj.push({
-					currentDay : this.state.currentDay,
-					startplace : this.refs['startplace_'+this.state.currentDay].value,
-					endplace : this.refs['endplace_'+this.state.currentDay].value,
-					time : this.refs['time_'+this.state.currentDay].value
-				});
-			}
-
-			this.clearForm(this.state.currentDay);
-			
-			this.setState({
-				currentDay : newDay,
-				dayObj : dayObj
-			});
-		}else{
-			console.log(this.state.dayObj);
-		}
-	}
-
-	render(){
+	render() {
 		return(
 			<div>
 				<strong>Day {this.state.currentDay}</strong>
@@ -115,12 +101,12 @@ export default class SideBarAddItenerary extends React.Component{
 				<div className="row row-margin">
 
 					<div className="pull-left">
-						<a className="glyphicon glyphicon-menu-left" onClick={this.previousDay}></a> 
+						<a className="glyphicon glyphicon-menu-left" onClick={this.changeDay.bind(this,'previous')}></a> 
 						 
 					</div>
 
 					<div className="pull-right">
-						<a className="glyphicon glyphicon-menu-right" onClick={this.nextDay} ></a> 
+						<a className="glyphicon glyphicon-menu-right" onClick={this.changeDay.bind(this,'next')} ></a> 
 					</div>
 
 				</div>
