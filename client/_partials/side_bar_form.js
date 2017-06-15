@@ -1,10 +1,35 @@
 import React from 'react';
+import DatePicker from 'react-datepicker';
+import moment from 'moment';
 
 export default class SideBarForm extends React.Component{
 
+	constructor(props) {
+		super(props);
+		this.state = {};
+		this.handleChange = this.handleChange.bind(this);
+		this.handleFormSubmit = this.handleFormSubmit.bind(this);
+	}
+
+	handleChange(dateType,date){
+		var dateToSet = dateType === 'startDate' ? 'startdate' : 'enddate';
+		this.setState({
+			[dateToSet] : date
+		});
+	}
+
+	handleFormSubmit(){
+		this.props.submitAction({
+			placeOfVisit : this.refs['place-of-visit'].value,
+			startDate : this.refs['start-date'].refs.input.value,
+			endDate : this.refs['end-date'].refs.input.value,
+			notes : this.refs['notes'].value
+		});
+	}
+
 	render(){
 		return(
-			<form name="iteneray-form" onSubmit={this.props.submitAction}>
+			<form name="iteneray-form" onSubmit={this.handleFormSubmit}>
 				<div className="row row-spacing ">
 					<div className="col-xs-4">
 						<span> Place of visit </span>
@@ -18,7 +43,7 @@ export default class SideBarForm extends React.Component{
 						<span> Start Date </span>
 					</div>
 					<div className="col-xs-8">
-						<input ref="start-date" type="date" placeholder="Start Date" className="form-control" required />
+						<DatePicker ref="start-date" selected={this.state.startdate} placeholderText="Start Date" className="form-control" onChange={(date)=>this.handleChange('startDate',date)} required />
 					</div>
 				</div>
 				<div className="row row-spacing ">
@@ -26,7 +51,7 @@ export default class SideBarForm extends React.Component{
 						<span> End Date </span>
 					</div>
 					<div className="col-xs-8">
-						<input ref="end-date" type="date" placeholder="End Date" className="form-control" required />
+						<DatePicker ref="end-date" selected={this.state.enddate} placeholderText="End Date" className="form-control" onChange={(date)=>this.handleChange('endDate',date)} required />
 					</div>
 				</div>
 				<div className="row row-spacing ">

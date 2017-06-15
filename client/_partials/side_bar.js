@@ -21,11 +21,11 @@ export default class Sidebar extends React.Component {
 		})
 	}
 
-	startAddingItenerary(){
-		console.log(this.refs);
-		this.setState({
-			sideBarElement : 'add'
-		})
+	startAddingItenerary(iteneraryObj){
+		console.log(iteneraryObj);
+		// this.setState({
+		// 	sideBarElement : 'add'
+		// })
 
 	}
 
