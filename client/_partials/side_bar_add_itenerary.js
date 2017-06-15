@@ -104,10 +104,17 @@ export default class SideBarAddItenerary extends React.Component {
 
 				<div className="row row-margin">
 					<div className="pull-left">
-						<a className="glyphicon glyphicon-menu-left pointer-cursor" onClick={this.changeDay.bind(this,'previous')}></a> 
+						<span className="pointer-cursor text-selection-off " onClick={this.changeDay.bind(this,'previous')}>
+							<span className="glyphicon glyphicon-menu-left next-previous-chevron" ></span> 
+							Previous 
+						</span>
 					</div>
 					<div className="pull-right">
-						<a className="glyphicon glyphicon-menu-right pointer-cursor" onClick={this.changeDay.bind(this,'next')} ></a> 
+						<span className="pointer-cursor text-selection-off " onClick={this.changeDay.bind(this,'next')}>
+							Next 
+							<span className="glyphicon glyphicon-menu-right next-previous-chevron" ></span> 
+						</span>
+						
 					</div>
 				</div>
 			</div>

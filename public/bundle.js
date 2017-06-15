@@ -29338,12 +29338,22 @@ class SideBarAddItenerary extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.
 				__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 					'div',
 					{ className: 'pull-left' },
-					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('a', { className: 'glyphicon glyphicon-menu-left pointer-cursor', onClick: this.changeDay.bind(this, 'previous') })
+					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+						'span',
+						{ className: 'pointer-cursor text-selection-off ', onClick: this.changeDay.bind(this, 'previous') },
+						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('span', { className: 'glyphicon glyphicon-menu-left next-previous-chevron' }),
+						'Previous'
+					)
 				),
 				__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 					'div',
 					{ className: 'pull-right' },
-					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('a', { className: 'glyphicon glyphicon-menu-right pointer-cursor', onClick: this.changeDay.bind(this, 'next') })
+					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+						'span',
+						{ className: 'pointer-cursor text-selection-off ', onClick: this.changeDay.bind(this, 'next') },
+						'Next',
+						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('span', { className: 'glyphicon glyphicon-menu-right next-previous-chevron' })
+					)
 				)
 			)
 		);
