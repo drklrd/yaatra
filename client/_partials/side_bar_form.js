@@ -1,6 +1,7 @@
 import React from 'react';
 import DatePicker from 'react-datepicker';
 import moment from 'moment';
+import Geosuggest from 'react-geosuggest';
 
 export default class SideBarForm extends React.Component{
 
@@ -9,6 +10,7 @@ export default class SideBarForm extends React.Component{
 		this.state = {};
 		this.handleChange = this.handleChange.bind(this);
 		this.handleFormSubmit = this.handleFormSubmit.bind(this);
+		this.onSuggestSelect = this.onSuggestSelect.bind(this);
 	}
 
 	handleChange(dateType,date){
@@ -18,9 +20,15 @@ export default class SideBarForm extends React.Component{
 		});
 	}
 
+	onSuggestSelect(suggest){
+		this.setState({
+			placeOfVisit : suggest
+		})
+	}
+
 	handleFormSubmit(){
 		this.props.submitAction({
-			placeOfVisit : this.refs['place-of-visit'].value,
+			placeOfVisit : this.state.placeOfVisit.description,
 			startDate : moment(this.state.startdate).format('YYYY-MM-DD'),
 			endDate : moment(this.state.enddate).format('YYYY-MM-DD'),
 			notes : this.refs['notes'].value
@@ -32,10 +40,10 @@ export default class SideBarForm extends React.Component{
 			<form name="iteneray-form" onSubmit={this.handleFormSubmit}>
 				<div className="row row-spacing ">
 					<div className="col-xs-4">
-						<span> Place of visit </span>
+						<span> You travelled to  </span>
 					</div>
 					<div className="col-xs-8">
-						<input ref="place-of-visit" type="text" placeholder="Place of visit"  className="form-control" required />
+						<Geosuggest className="" placeholder="Place name" onSuggestSelect={(suggest)=>{this.onSuggestSelect(suggest)}} required />
 					</div>
 				</div>
 				<div className="row row-spacing ">
@@ -43,7 +51,7 @@ export default class SideBarForm extends React.Component{
 						<span> Start Date </span>
 					</div>
 					<div className="col-xs-8">
-						<DatePicker maxDate={this.state.enddate && moment(this.state.enddate)} ref="start-date" selected={this.state.startdate} placeholderText="Start Date" className="form-control" onChange={(date)=>this.handleChange('startDate',date)} required />
+						<DatePicker maxDate={this.state.enddate && moment(this.state.enddate)} ref="start-date" selected={this.state.startdate} placeholderText="Start Date" className="form-control width-100" onChange={(date)=>this.handleChange('startDate',date)} required />
 					</div>
 				</div>
 				<div className="row row-spacing ">
@@ -51,7 +59,7 @@ export default class SideBarForm extends React.Component{
 						<span> End Date </span>
 					</div>
 					<div className="col-xs-8">
-						<DatePicker  minDate={this.state.startdate && moment(this.state.startdate)} ref="end-date" selected={this.state.enddate} placeholderText="End Date" className="form-control" onChange={(date)=>this.handleChange('endDate',date)} required />
+						<DatePicker  minDate={this.state.startdate && moment(this.state.startdate)} ref="end-date" selected={this.state.enddate} placeholderText="End Date" className="form-control width-100" onChange={(date)=>this.handleChange('endDate',date)} required />
 					</div>
 				</div>
 				<div className="row row-spacing ">
