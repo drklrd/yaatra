@@ -29104,6 +29104,9 @@ class MapView extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__side_bar_form__ = __webpack_require__(195);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__side_bar_add_itenerary__ = __webpack_require__(194);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_moment__ = __webpack_require__(457);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_moment__);
+
 
 
 
@@ -29114,7 +29117,7 @@ class Sidebar extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
 		super(props);
 		this.state = {
 			opened: true,
-			sideBarElement: 'add'
+			sideBarElement: 'form'
 		};
 		this.toggleSideBar = this.toggleSideBar.bind(this);
 		this.startAddingItenerary = this.startAddingItenerary.bind(this);
@@ -29128,10 +29131,12 @@ class Sidebar extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
 	}
 
 	startAddingItenerary(iteneraryObj) {
-		console.log(iteneraryObj);
-		// this.setState({
-		// 	sideBarElement : 'add'
-		// })
+		var start = __WEBPACK_IMPORTED_MODULE_3_moment___default()(iteneraryObj.startDate);
+		var end = __WEBPACK_IMPORTED_MODULE_3_moment___default()(iteneraryObj.endDate);
+		this.setState({
+			sideBarElement: 'add',
+			travelDays: Math.abs(start.diff(end, 'days')) + 1
+		});
 	}
 
 	render() {
@@ -29167,7 +29172,7 @@ class Sidebar extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
 				{ id: 'collapse1', className: 'panel-collapse collapse in' },
 				__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('hr', null),
 				this.state.sideBarElement === 'form' && __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__side_bar_form__["a" /* default */], { submitAction: this.startAddingItenerary.bind(this) }),
-				this.state.sideBarElement === 'add' && __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__side_bar_add_itenerary__["a" /* default */], null),
+				this.state.sideBarElement === 'add' && __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__side_bar_add_itenerary__["a" /* default */], { travelDays: this.state.travelDays }),
 				__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('br', null)
 			)
 		);
@@ -29187,10 +29192,10 @@ class Sidebar extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
 
 class SideBarAddItenerary extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
 
-	constructor() {
-		super();
+	constructor(props) {
+		super(props);
 		this.state = {
-			days: 5,
+			days: this.props.travelDays,
 			currentDay: 1,
 			dayObj: []
 		};
@@ -29258,10 +29263,13 @@ class SideBarAddItenerary extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.
 			'div',
 			null,
 			__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-				'h3',
+				'h4',
 				{ className: this.state.blink ? "blink" : "" },
 				'Day ',
-				this.state.currentDay
+				this.state.currentDay,
+				' of your ',
+				this.props.travelDays,
+				' day(s) itenerary '
 			),
 			__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 				'div',

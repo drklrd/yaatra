@@ -2,10 +2,10 @@ import React from 'react';
 
 export default class SideBarAddItenerary extends React.Component {
 
-	constructor() {
-		super();
+	constructor(props) {
+		super(props);
 		this.state = {
-			days: 5,
+			days: this.props.travelDays,
 			currentDay: 1,
 			dayObj: []
 		};
@@ -72,7 +72,7 @@ export default class SideBarAddItenerary extends React.Component {
 	render() {
 		return(
 			<div>
-				<h3 className={this.state.blink ? "blink" : ""}>Day {this.state.currentDay}</h3>
+				<h4 className={this.state.blink ? "blink" : ""}>Day {this.state.currentDay} of your {this.props.travelDays} day(s) itenerary </h4>
 				<div className="row row-spacing ">
 					<div className="col-xs-5">
 						<span> {"Starting Point for the day "} </span>
@@ -101,19 +101,14 @@ export default class SideBarAddItenerary extends React.Component {
 				</div>
 
 				<br/>
-				
 
 				<div className="row row-margin">
-
 					<div className="pull-left">
 						<a className="glyphicon glyphicon-menu-left pointer-cursor" onClick={this.changeDay.bind(this,'previous')}></a> 
-						 
 					</div>
-
 					<div className="pull-right">
 						<a className="glyphicon glyphicon-menu-right pointer-cursor" onClick={this.changeDay.bind(this,'next')} ></a> 
 					</div>
-
 				</div>
 			</div>
 		);

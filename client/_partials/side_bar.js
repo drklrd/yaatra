@@ -1,6 +1,7 @@
 import React from 'react';
 import SideBarForm from './side_bar_form';
 import SideBarAdd from './side_bar_add_itenerary';
+import moment from 'moment';
 
 export default class Sidebar extends React.Component {
 
@@ -8,7 +9,7 @@ export default class Sidebar extends React.Component {
 		super(props);
 		this.state = {
 			opened : true,
-			sideBarElement : 'add'
+			sideBarElement : 'form'
 		}
 		this.toggleSideBar = this.toggleSideBar.bind(this);
 		this.startAddingItenerary = this.startAddingItenerary.bind(this);
@@ -22,10 +23,12 @@ export default class Sidebar extends React.Component {
 	}
 
 	startAddingItenerary(iteneraryObj){
-		console.log(iteneraryObj);
-		// this.setState({
-		// 	sideBarElement : 'add'
-		// })
+		var start = moment(iteneraryObj.startDate);
+		var end = moment(iteneraryObj.endDate);
+		this.setState({
+			sideBarElement : 'add',
+			travelDays :  Math.abs(start.diff(end,'days'))+1
+		})
 
 	}
 
@@ -45,7 +48,7 @@ export default class Sidebar extends React.Component {
 				<div id="collapse1" className="panel-collapse collapse in">
 					<hr/>
 					{this.state.sideBarElement === 'form' &&  <SideBarForm submitAction={this.startAddingItenerary.bind(this)} />}
-					{this.state.sideBarElement === 'add' &&  <SideBarAdd/>}
+					{this.state.sideBarElement === 'add' &&  <SideBarAdd travelDays={this.state.travelDays} />}
 					<br/>
 				</div>
 			</div>
