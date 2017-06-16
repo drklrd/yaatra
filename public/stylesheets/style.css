@@ -211,3 +211,8 @@ body, html {
     -ms-user-select: none;
     user-select: none;
 }
+
+.out-of-days{
+  font-style: italic;
+  font-size:11px;
+}

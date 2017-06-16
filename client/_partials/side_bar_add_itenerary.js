@@ -72,7 +72,8 @@ export default class SideBarAddItenerary extends React.Component {
 	render() {
 		return(
 			<div>
-				<h4 className={this.state.blink ? "blink" : ""}>Day {this.state.currentDay} of your {this.props.travelDays} day(s) itenerary </h4>
+				<h2 className={this.state.blink ? "blink" : ""}>Day {this.state.currentDay}</h2>
+				<span className="out-of-days"> of your {this.props.travelDays} day(s) itenerary </span>
 				<div className="row row-spacing ">
 					<div className="col-xs-5">
 						<span> {"Starting Point for the day "} </span>
@@ -93,7 +94,7 @@ export default class SideBarAddItenerary extends React.Component {
 
 				<div className="row row-spacing ">
 					<div className="col-xs-5">
-						<span> {"Total time for the day "} (in hours) </span>
+						<span> {"Total hours "} </span>
 					</div>
 					<div className="col-xs-7">
 						<input ref={"time_"+this.state.currentDay} type="text" placeholder={"Total time"} className="form-control" required/>
