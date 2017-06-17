@@ -9,7 +9,7 @@ export default class Sidebar extends React.Component {
 		super(props);
 		this.state = {
 			opened : true,
-			sideBarElement : 'form'
+			sideBarElement : 'add'
 		}
 		this.toggleSideBar = this.toggleSideBar.bind(this);
 		this.startAddingItenerary = this.startAddingItenerary.bind(this);

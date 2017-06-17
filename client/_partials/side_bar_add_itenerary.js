@@ -5,16 +5,16 @@ export default class SideBarAddItenerary extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			days: this.props.travelDays,
+			days: 3,
 			currentDay: 1,
 			dayObj: []
 		};
 	}
 
 	clearForm(currentDay) {
-		var fields = ['startplace_', 'endplace_', 'time_'];
+		var fields = ['startplace', 'endplace', 'time'];
 		fields.forEach((field) => {
-			this.refs[`${field+currentDay}`].value = null;
+			this.refs[`${field}`].value = null;
 		});
 	}
 
@@ -37,9 +37,9 @@ export default class SideBarAddItenerary extends React.Component {
 			var dayObj = this.state.dayObj;
 			var currentvalue = {
 				currentDay: this.state.currentDay,
-				startplace: this.refs['startplace_' + fromDay].value,
-				endplace: this.refs['endplace_' + fromDay].value,
-				time: this.refs['time_' + fromDay].value
+				startplace: this.refs['startplace'].value,
+				endplace: this.refs['endplace'].value,
+				time: this.refs['time'].value
 			};
 			var fromDayExists = this.doDayExists(dayObj, fromDay);
 			if (fromDayExists !== undefined) {
@@ -49,9 +49,9 @@ export default class SideBarAddItenerary extends React.Component {
 			}
 			var toDayExists = this.doDayExists(dayObj, toDay);
 			if (toDayExists !== undefined) {
-				this.refs['startplace_' + fromDay].value = dayObj[toDayExists].startplace;
-				this.refs['endplace_' + fromDay].value = dayObj[toDayExists].endplace;
-				this.refs['time_' + fromDay].value = dayObj[toDayExists].time;
+				this.refs['startplace'].value = dayObj[toDayExists].startplace;
+				this.refs['endplace'].value = dayObj[toDayExists].endplace;
+				this.refs['time'].value = dayObj[toDayExists].time;
 			} else {
 				this.clearForm(fromDay);
 			}
@@ -79,7 +79,7 @@ export default class SideBarAddItenerary extends React.Component {
 						<span> {"Starting Point for the day "} </span>
 					</div>
 					<div className="col-xs-7">
-						<input ref={"startplace_"+this.state.currentDay} type="text" placeholder={"Starting Point"} className="form-control" required/>
+						<input ref={"startplace"} type="text" placeholder={"Starting Point"} className="form-control" required/>
 					</div>
 				</div>
 
@@ -88,7 +88,7 @@ export default class SideBarAddItenerary extends React.Component {
 						<span> {"Resting Point for the day "} </span>
 					</div>
 					<div className="col-xs-7">
-						<input ref={"endplace_"+this.state.currentDay} type="text" placeholder={"Resting Point"} className="form-control" required/>
+						<input ref={"endplace"} type="text" placeholder={"Resting Point"} className="form-control" required/>
 					</div>
 				</div>
 
@@ -97,7 +97,7 @@ export default class SideBarAddItenerary extends React.Component {
 						<span> {"Total hours "} </span>
 					</div>
 					<div className="col-xs-7">
-						<input ref={"time_"+this.state.currentDay} type="text" placeholder={"Total time"} className="form-control" required/>
+						<input ref={"time"} type="text" placeholder={"Total time"} className="form-control" required/>
 					</div>
 				</div>
 
