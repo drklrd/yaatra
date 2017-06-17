@@ -45471,6 +45471,9 @@ class Sidebar extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_geosuggest__ = __webpack_require__(296);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_geosuggest___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react_geosuggest__);
+
 
 
 class SideBarAddItenerary extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
@@ -45487,7 +45490,11 @@ class SideBarAddItenerary extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.
 	clearForm(currentDay) {
 		var fields = ['startplace', 'endplace', 'time'];
 		fields.forEach(field => {
-			this.refs[`${field}`].value = null;
+			if (this.refs[`${field}`].clear) {
+				this.refs[`${field}`].clear();
+			} else {
+				this.refs[`${field}`].value = null;
+			}
 		});
 	}
 
@@ -45510,8 +45517,8 @@ class SideBarAddItenerary extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.
 			var dayObj = this.state.dayObj;
 			var currentvalue = {
 				currentDay: this.state.currentDay,
-				startplace: this.refs['startplace'].value,
-				endplace: this.refs['endplace'].value,
+				startplace: this.state['startplace_' + this.state.currentDay] || "",
+				endplace: this.state['endplace_' + this.state.currentDay] || "",
 				time: this.refs['time'].value
 			};
 			var fromDayExists = this.doDayExists(dayObj, fromDay);
@@ -45522,8 +45529,8 @@ class SideBarAddItenerary extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.
 			}
 			var toDayExists = this.doDayExists(dayObj, toDay);
 			if (toDayExists !== undefined) {
-				this.refs['startplace'].value = dayObj[toDayExists].startplace;
-				this.refs['endplace'].value = dayObj[toDayExists].endplace;
+				this.refs['startplace'].update(dayObj[toDayExists].startplace);
+				this.refs['endplace'].update(dayObj[toDayExists].endplace);
 				this.refs['time'].value = dayObj[toDayExists].time;
 			} else {
 				this.clearForm(fromDay);
@@ -45539,6 +45546,12 @@ class SideBarAddItenerary extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.
 				blink: true
 			});
 		}
+	}
+
+	onSuggestSelect(suggest, point) {
+		this.setState({
+			[point + '_' + this.state.currentDay]: suggest.description
+		});
 	}
 
 	render() {
@@ -45575,7 +45588,9 @@ class SideBarAddItenerary extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.
 				__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 					'div',
 					{ className: 'col-xs-7' },
-					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { ref: "startplace", type: 'text', placeholder: "Starting Point", className: 'form-control', required: true })
+					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_geosuggest___default.a, { ref: "startplace", placeholder: 'Starting Point', onSuggestSelect: suggest => {
+							this.onSuggestSelect(suggest, 'startplace');
+						}, required: true })
 				)
 			),
 			__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
@@ -45595,7 +45610,9 @@ class SideBarAddItenerary extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.
 				__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 					'div',
 					{ className: 'col-xs-7' },
-					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { ref: "endplace", type: 'text', placeholder: "Resting Point", className: 'form-control', required: true })
+					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_geosuggest___default.a, { ref: "endplace", placeholder: 'Resting Point', onSuggestSelect: suggest => {
+							this.onSuggestSelect(suggest, 'endplace');
+						}, required: true })
 				)
 			),
 			__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(

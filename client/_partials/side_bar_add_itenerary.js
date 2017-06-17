@@ -1,4 +1,5 @@
 import React from 'react';
+import Geosuggest from 'react-geosuggest';
 
 export default class SideBarAddItenerary extends React.Component {
 
@@ -14,7 +15,11 @@ export default class SideBarAddItenerary extends React.Component {
 	clearForm(currentDay) {
 		var fields = ['startplace', 'endplace', 'time'];
 		fields.forEach((field) => {
-			this.refs[`${field}`].value = null;
+			if(this.refs[`${field}`].clear){
+				this.refs[`${field}`].clear();
+			}else{
+				this.refs[`${field}`].value = null;
+			}
 		});
 	}
 
@@ -37,8 +42,8 @@ export default class SideBarAddItenerary extends React.Component {
 			var dayObj = this.state.dayObj;
 			var currentvalue = {
 				currentDay: this.state.currentDay,
-				startplace: this.refs['startplace'].value,
-				endplace: this.refs['endplace'].value,
+				startplace: this.state['startplace_'+this.state.currentDay] || "",
+				endplace: this.state['endplace_'+this.state.currentDay] || "",
 				time: this.refs['time'].value
 			};
 			var fromDayExists = this.doDayExists(dayObj, fromDay);
@@ -49,8 +54,8 @@ export default class SideBarAddItenerary extends React.Component {
 			}
 			var toDayExists = this.doDayExists(dayObj, toDay);
 			if (toDayExists !== undefined) {
-				this.refs['startplace'].value = dayObj[toDayExists].startplace;
-				this.refs['endplace'].value = dayObj[toDayExists].endplace;
+				this.refs['startplace'].update(dayObj[toDayExists].startplace);
+				this.refs['endplace'].update(dayObj[toDayExists].endplace);
 				this.refs['time'].value = dayObj[toDayExists].time;
 			} else {
 				this.clearForm(fromDay);
@@ -68,6 +73,13 @@ export default class SideBarAddItenerary extends React.Component {
 		}
 	}
 
+	onSuggestSelect(suggest,point){
+		this.setState({
+			[point+'_'+this.state.currentDay] : suggest.description
+		})
+		
+	}
+
 
 	render() {
 		return(
@@ -79,7 +91,7 @@ export default class SideBarAddItenerary extends React.Component {
 						<span> {"Starting Point for the day "} </span>
 					</div>
 					<div className="col-xs-7">
-						<input ref={"startplace"} type="text" placeholder={"Starting Point"} className="form-control" required/>
+						<Geosuggest ref={"startplace"}  placeholder="Starting Point" onSuggestSelect={(suggest)=>{this.onSuggestSelect(suggest,'startplace')}} required />
 					</div>
 				</div>
 
@@ -88,7 +100,7 @@ export default class SideBarAddItenerary extends React.Component {
 						<span> {"Resting Point for the day "} </span>
 					</div>
 					<div className="col-xs-7">
-						<input ref={"endplace"} type="text" placeholder={"Resting Point"} className="form-control" required/>
+						<Geosuggest ref={"endplace"}  placeholder="Resting Point" onSuggestSelect={(suggest)=>{this.onSuggestSelect(suggest,'endplace')}} required />
 					</div>
 				</div>
 
