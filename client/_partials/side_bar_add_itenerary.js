@@ -6,7 +6,7 @@ export default class SideBarAddItenerary extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			days: 3,
+			days: this.props.travelDays,
 			currentDay: 1,
 			dayObj: []
 		};
@@ -42,8 +42,8 @@ export default class SideBarAddItenerary extends React.Component {
 			var dayObj = this.state.dayObj;
 			var currentvalue = {
 				currentDay: this.state.currentDay,
-				startplace: this.state['startplace_'+this.state.currentDay] || "",
-				endplace: this.state['endplace_'+this.state.currentDay] || "",
+				startplace: this.state['startplace_'+this.state.currentDay],
+				endplace: this.state['endplace_'+this.state.currentDay],
 				time: this.refs['time'].value
 			};
 			var fromDayExists = this.doDayExists(dayObj, fromDay);
@@ -54,12 +54,14 @@ export default class SideBarAddItenerary extends React.Component {
 			}
 			var toDayExists = this.doDayExists(dayObj, toDay);
 			if (toDayExists !== undefined) {
-				this.refs['startplace'].update(dayObj[toDayExists].startplace);
-				this.refs['endplace'].update(dayObj[toDayExists].endplace);
+				this.refs['startplace'].update(dayObj[toDayExists].startplace ? dayObj[toDayExists].startplace.description : "");
+				this.refs['endplace'].update(dayObj[toDayExists].endplace ? dayObj[toDayExists].endplace.description : "");
 				this.refs['time'].value = dayObj[toDayExists].time;
 			} else {
 				this.clearForm(fromDay);
 			}
+
+			console.log(dayObj)
 
 			this.setState({
 				currentDay: toDay,
@@ -75,7 +77,7 @@ export default class SideBarAddItenerary extends React.Component {
 
 	onSuggestSelect(suggest,point){
 		this.setState({
-			[point+'_'+this.state.currentDay] : suggest.description
+			[point+'_'+this.state.currentDay] : suggest
 		})
 		
 	}

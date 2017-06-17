@@ -45400,7 +45400,7 @@ class Sidebar extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
 		super(props);
 		this.state = {
 			opened: true,
-			sideBarElement: 'add'
+			sideBarElement: 'form'
 		};
 		this.toggleSideBar = this.toggleSideBar.bind(this);
 		this.startAddingItenerary = this.startAddingItenerary.bind(this);
@@ -45481,7 +45481,7 @@ class SideBarAddItenerary extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.
 	constructor(props) {
 		super(props);
 		this.state = {
-			days: 3,
+			days: this.props.travelDays,
 			currentDay: 1,
 			dayObj: []
 		};
@@ -45517,8 +45517,8 @@ class SideBarAddItenerary extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.
 			var dayObj = this.state.dayObj;
 			var currentvalue = {
 				currentDay: this.state.currentDay,
-				startplace: this.state['startplace_' + this.state.currentDay] || "",
-				endplace: this.state['endplace_' + this.state.currentDay] || "",
+				startplace: this.state['startplace_' + this.state.currentDay],
+				endplace: this.state['endplace_' + this.state.currentDay],
 				time: this.refs['time'].value
 			};
 			var fromDayExists = this.doDayExists(dayObj, fromDay);
@@ -45529,12 +45529,14 @@ class SideBarAddItenerary extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.
 			}
 			var toDayExists = this.doDayExists(dayObj, toDay);
 			if (toDayExists !== undefined) {
-				this.refs['startplace'].update(dayObj[toDayExists].startplace);
-				this.refs['endplace'].update(dayObj[toDayExists].endplace);
+				this.refs['startplace'].update(dayObj[toDayExists].startplace ? dayObj[toDayExists].startplace.description : "");
+				this.refs['endplace'].update(dayObj[toDayExists].endplace ? dayObj[toDayExists].endplace.description : "");
 				this.refs['time'].value = dayObj[toDayExists].time;
 			} else {
 				this.clearForm(fromDay);
 			}
+
+			console.log(dayObj);
 
 			this.setState({
 				currentDay: toDay,
@@ -45550,7 +45552,7 @@ class SideBarAddItenerary extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.
 
 	onSuggestSelect(suggest, point) {
 		this.setState({
-			[point + '_' + this.state.currentDay]: suggest.description
+			[point + '_' + this.state.currentDay]: suggest
 		});
 	}
 
