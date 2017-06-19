@@ -29414,8 +29414,8 @@ class App extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
 class MapView extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
 
 	componentWillReceiveProps(nextProps) {
-		console.log('&&', this.props.markers);
 		this.map.fitBounds(this.props.markers);
+		var marker = L.marker(this.props.markers[0]).addTo(this.map);
 	}
 
 	componentDidMount() {
