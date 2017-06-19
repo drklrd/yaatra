@@ -29431,9 +29431,6 @@ class SideBarAddItenerary extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.
 			} else {
 				this.clearForm(fromDay);
 			}
-
-			console.log(dayObj);
-
 			this.setState({
 				currentDay: toDay,
 				dayObj: dayObj,
@@ -29450,7 +29447,6 @@ class SideBarAddItenerary extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.
 		this.setState({
 			[point + '_' + this.state.currentDay]: suggest
 		});
-
 		this.props.handleCoordinates(suggest);
 	}
 
@@ -29488,7 +29484,7 @@ class SideBarAddItenerary extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.
 				__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 					'div',
 					{ className: 'col-xs-7' },
-					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_geosuggest___default.a, { ref: "startplace", placeholder: 'Starting Point', onSuggestSelect: suggest => {
+					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_geosuggest___default.a, { country: 'np', ref: "startplace", placeholder: 'Starting Point', onSuggestSelect: suggest => {
 							this.onSuggestSelect(suggest, 'startplace');
 						}, required: true })
 				)
@@ -29510,7 +29506,7 @@ class SideBarAddItenerary extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.
 				__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 					'div',
 					{ className: 'col-xs-7' },
-					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_geosuggest___default.a, { ref: "endplace", placeholder: 'Resting Point', onSuggestSelect: suggest => {
+					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_geosuggest___default.a, { country: 'np', ref: "endplace", placeholder: 'Resting Point', onSuggestSelect: suggest => {
 							this.onSuggestSelect(suggest, 'endplace');
 						}, required: true })
 				)

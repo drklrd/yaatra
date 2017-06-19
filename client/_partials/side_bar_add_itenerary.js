@@ -61,9 +61,6 @@ export default class SideBarAddItenerary extends React.Component {
 			} else {
 				this.clearForm(fromDay);
 			}
-
-			console.log(dayObj)
-
 			this.setState({
 				currentDay: toDay,
 				dayObj: dayObj,
@@ -80,11 +77,8 @@ export default class SideBarAddItenerary extends React.Component {
 		this.setState({
 			[point+'_'+this.state.currentDay] : suggest
 		});
-
 		this.props.handleCoordinates(suggest);
-
 	}
-
 
 	render() {
 		return(
@@ -96,7 +90,7 @@ export default class SideBarAddItenerary extends React.Component {
 						<span> {"Starting Point for the day "} </span>
 					</div>
 					<div className="col-xs-7">
-						<Geosuggest ref={"startplace"}  placeholder="Starting Point" onSuggestSelect={(suggest)=>{this.onSuggestSelect(suggest,'startplace')}} required />
+						<Geosuggest country="np" ref={"startplace"}  placeholder="Starting Point" onSuggestSelect={(suggest)=>{this.onSuggestSelect(suggest,'startplace')}} required />
 					</div>
 				</div>
 
@@ -105,7 +99,7 @@ export default class SideBarAddItenerary extends React.Component {
 						<span> {"Resting Point for the day "} </span>
 					</div>
 					<div className="col-xs-7">
-						<Geosuggest ref={"endplace"}  placeholder="Resting Point" onSuggestSelect={(suggest)=>{this.onSuggestSelect(suggest,'endplace')}} required />
+						<Geosuggest country="np" ref={"endplace"}  placeholder="Resting Point" onSuggestSelect={(suggest)=>{this.onSuggestSelect(suggest,'endplace')}} required />
 					</div>
 				</div>
 
