@@ -6,7 +6,8 @@ export default class SideBarAddItenerary extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			days: this.props.travelDays,
+			// days: this.props.travelDays,
+			days : 3,
 			currentDay: 1,
 			dayObj: []
 		};
@@ -78,8 +79,10 @@ export default class SideBarAddItenerary extends React.Component {
 	onSuggestSelect(suggest,point){
 		this.setState({
 			[point+'_'+this.state.currentDay] : suggest
-		})
-		
+		});
+
+		this.props.handleCoordinates(suggest);
+
 	}
 
 
@@ -120,16 +123,16 @@ export default class SideBarAddItenerary extends React.Component {
 				<div className="row row-margin">
 					<div className="pull-left">
 						<span className="pointer-cursor text-selection-off " onClick={this.changeDay.bind(this,'previous')}>
-							<span className="glyphicon glyphicon-menu-left next-previous-chevron" ></span> 
-							Previous 
+							<span className="glyphicon glyphicon-menu-left next-previous-chevron" ></span>
+							Previous
 						</span>
 					</div>
 					<div className="pull-right">
 						<span className="pointer-cursor text-selection-off " onClick={this.changeDay.bind(this,'next')}>
-							Next 
-							<span className="glyphicon glyphicon-menu-right next-previous-chevron" ></span> 
+							Next
+							<span className="glyphicon glyphicon-menu-right next-previous-chevron" ></span>
 						</span>
-						
+
 					</div>
 				</div>
 			</div>

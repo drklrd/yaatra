@@ -6,7 +6,9 @@ export default class MapView extends React.Component{
 
 	componentWillReceiveProps(nextProps) {
 		this.map.fitBounds(this.props.markers);
-		var marker = L.marker(this.props.markers[0]).addTo(this.map);
+		this.props.markers.forEach(function(marker){
+			var marker = new L.marker(marker).addTo(this.map);
+		}.bind(this))
 	}
 
 	componentDidMount() {
