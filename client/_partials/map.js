@@ -12,7 +12,7 @@ export default class MapView extends React.Component{
 	}
 
 	componentDidMount() {
-		var map = this.map = L.map(ReactDOM.findDOMNode(this.refs['map'])).setView([27.7172, 85.3240], 15);
+		var map = this.map = L.map(ReactDOM.findDOMNode(this.refs['map'])).setView([27.7172, 85.3240], 7);
 		L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
 		    attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
 		}).addTo(map);

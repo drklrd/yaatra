@@ -13,7 +13,6 @@ export default class App extends React.Component {
 	}
 
 	handleCoordinates(coordinates) {
-		console.log('$$$',coordinates);
 		let {markers} = this.state;
 		markers.push(coordinates.location)
 		this.setState({
@@ -31,7 +30,7 @@ export default class App extends React.Component {
 								<button type="button" className="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
 									<span className="icon-bar"></span>
 									<span className="icon-bar"></span>
-									<span className="icon-bar"></span>                        
+									<span className="icon-bar"></span>
 								</button>
 								<a className="navbar-brand" href="/"> यात्रा </a>
 						</div>

@@ -24,7 +24,6 @@ export default class SideBarForm extends React.Component{
 		this.setState({
 			placeOfVisit : suggest
 		});
-		
 	}
 
 	handleFormSubmit(){

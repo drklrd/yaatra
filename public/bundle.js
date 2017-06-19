@@ -29072,7 +29072,6 @@ class App extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
 	}
 
 	handleCoordinates(coordinates) {
-		console.log('$$$', coordinates);
 		let { markers } = this.state;
 		markers.push(coordinates.location);
 		this.setState({
@@ -29256,7 +29255,7 @@ class MapView extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
 	}
 
 	componentDidMount() {
-		var map = this.map = L.map(__WEBPACK_IMPORTED_MODULE_1_react_dom___default.a.findDOMNode(this.refs['map'])).setView([27.7172, 85.3240], 15);
+		var map = this.map = L.map(__WEBPACK_IMPORTED_MODULE_1_react_dom___default.a.findDOMNode(this.refs['map'])).setView([27.7172, 85.3240], 7);
 		L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
 			attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
 		}).addTo(map);
@@ -29386,10 +29385,12 @@ class SideBarAddItenerary extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.
 	clearForm(currentDay) {
 		var fields = ['startplace', 'endplace', 'time'];
 		fields.forEach(field => {
-			if (this.refs[`${field}`].clear) {
-				this.refs[`${field}`].clear();
-			} else {
-				this.refs[`${field}`].value = null;
+			if (this.refs[`${field}`]) {
+				if (this.refs[`${field}`].clear) {
+					this.refs[`${field}`].clear();
+				} else {
+					this.refs[`${field}`].value = null;
+				}
 			}
 		});
 	}
@@ -29425,9 +29426,11 @@ class SideBarAddItenerary extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.
 			}
 			var toDayExists = this.doDayExists(dayObj, toDay);
 			if (toDayExists !== undefined) {
-				this.refs['startplace'].update(dayObj[toDayExists].startplace ? dayObj[toDayExists].startplace.description : "");
-				this.refs['endplace'].update(dayObj[toDayExists].endplace ? dayObj[toDayExists].endplace.description : "");
-				this.refs['time'].value = dayObj[toDayExists].time;
+				try {
+					this.refs['startplace'].update(dayObj[toDayExists].startplace ? dayObj[toDayExists].startplace.description : "");
+					this.refs['endplace'].update(dayObj[toDayExists].endplace ? dayObj[toDayExists].endplace.description : "");
+					this.refs['time'].value = dayObj[toDayExists].time;
+				} catch (e) {}
 			} else {
 				this.clearForm(fromDay);
 			}
@@ -29467,7 +29470,7 @@ class SideBarAddItenerary extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.
 				this.props.travelDays,
 				' day(s) itenerary '
 			),
-			__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+			this.state.currentDay === 1 && __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 				'div',
 				{ className: 'row row-spacing ' },
 				__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
