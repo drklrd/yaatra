@@ -5,9 +5,11 @@ import ReactDOM from 'react-dom'
 export default class MapView extends React.Component{
 
 	componentWillReceiveProps(nextProps) {
-		this.map.fitBounds(this.props.markers);
+		this.map.fitBounds(this.props.markers.map(marker=>{
+			return marker.coordinates;
+		}));
 		this.props.markers.forEach(function(marker){
-			var marker = new L.marker(marker).addTo(this.map);
+			var marker = new L.marker(marker.coordinates).addTo(this.map);
 		}.bind(this))
 	}
 

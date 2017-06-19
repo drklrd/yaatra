@@ -29071,9 +29071,9 @@ class App extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
 		};
 	}
 
-	handleCoordinates(coordinates) {
+	handleCoordinates(coordinates, day) {
 		let { markers } = this.state;
-		markers.push(coordinates.location);
+		markers.push({ coordinates: coordinates.location, day });
 		this.setState({
 			markers
 		});
@@ -29248,9 +29248,11 @@ class App extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
 class MapView extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
 
 	componentWillReceiveProps(nextProps) {
-		this.map.fitBounds(this.props.markers);
+		this.map.fitBounds(this.props.markers.map(marker => {
+			return marker.coordinates;
+		}));
 		this.props.markers.forEach(function (marker) {
-			var marker = new L.marker(marker).addTo(this.map);
+			var marker = new L.marker(marker.coordinates).addTo(this.map);
 		}.bind(this));
 	}
 
@@ -29407,7 +29409,6 @@ class SideBarAddItenerary extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.
 	}
 
 	changeDay(nextOrPrevious) {
-
 		if (nextOrPrevious === 'next' && this.state.currentDay < this.state.days || nextOrPrevious === 'previous' && this.state.currentDay > 1) {
 			var fromDay = this.state.currentDay;
 			var toDay = nextOrPrevious === 'next' ? this.state.currentDay + 1 : this.state.currentDay - 1;
@@ -29450,7 +29451,7 @@ class SideBarAddItenerary extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.
 		this.setState({
 			[point + '_' + this.state.currentDay]: suggest
 		});
-		this.props.handleCoordinates(suggest);
+		this.props.handleCoordinates(suggest, this.state.currentDay);
 	}
 
 	render() {
@@ -29635,7 +29636,7 @@ class SideBarForm extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Componen
 				__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 					'div',
 					{ className: 'col-xs-8' },
-					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3_react_geosuggest___default.a, { className: '', placeholder: 'Place name', onSuggestSelect: suggest => {
+					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3_react_geosuggest___default.a, { country: 'np', className: '', placeholder: 'Place name', onSuggestSelect: suggest => {
 							this.onSuggestSelect(suggest);
 						}, required: true })
 				)

@@ -39,7 +39,6 @@ export default class SideBarAddItenerary extends React.Component {
 	}
 
 	changeDay(nextOrPrevious) {
-
 		if ((nextOrPrevious === 'next' && this.state.currentDay < this.state.days) || (nextOrPrevious === 'previous' && this.state.currentDay > 1)) {
 			var fromDay = this.state.currentDay;
 			var toDay = nextOrPrevious === 'next' ? this.state.currentDay + 1 : this.state.currentDay - 1;
@@ -64,9 +63,7 @@ export default class SideBarAddItenerary extends React.Component {
 					this.refs['time'].value = dayObj[toDayExists].time;
 				}
 				catch(e){
-					
 				}
-
 			} else {
 				this.clearForm(fromDay);
 			}
@@ -86,7 +83,7 @@ export default class SideBarAddItenerary extends React.Component {
 		this.setState({
 			[point+'_'+this.state.currentDay] : suggest
 		});
-		this.props.handleCoordinates(suggest);
+		this.props.handleCoordinates(suggest,this.state.currentDay);
 	}
 
 	render() {
@@ -94,7 +91,6 @@ export default class SideBarAddItenerary extends React.Component {
 			<div>
 				<h2 className={this.state.blink ? "blink" : ""}>Day {this.state.currentDay}</h2>
 				<span className="out-of-days"> of your {this.props.travelDays} day(s) itenerary </span>
-
 				{
 					this.state.currentDay === 1 && (<div className="row row-spacing ">
 						<div className="col-xs-5">
@@ -105,8 +101,6 @@ export default class SideBarAddItenerary extends React.Component {
 						</div>
 					</div>)
 				}
-
-
 				<div className="row row-spacing ">
 					<div className="col-xs-5">
 						<span> {"Resting Point for the day "} </span>
@@ -124,9 +118,7 @@ export default class SideBarAddItenerary extends React.Component {
 						<input ref={"time"} type="text" placeholder={"Total time"} className="form-control" required/>
 					</div>
 				</div>
-
 				<br/>
-
 				<div className="row row-margin">
 					<div className="pull-left">
 						<span className="pointer-cursor text-selection-off " onClick={this.changeDay.bind(this,'previous')}>
@@ -139,7 +131,6 @@ export default class SideBarAddItenerary extends React.Component {
 							Next
 							<span className="glyphicon glyphicon-menu-right next-previous-chevron" ></span>
 						</span>
-
 					</div>
 				</div>
 			</div>

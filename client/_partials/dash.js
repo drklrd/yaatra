@@ -12,9 +12,9 @@ export default class App extends React.Component {
 		}
 	}
 
-	handleCoordinates(coordinates) {
+	handleCoordinates(coordinates,day) {
 		let {markers} = this.state;
-		markers.push(coordinates.location)
+		markers.push({coordinates : coordinates.location , day})
 		this.setState({
 			markers
 		})

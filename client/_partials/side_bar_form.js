@@ -43,7 +43,7 @@ export default class SideBarForm extends React.Component{
 						<span> You travelled to  </span>
 					</div>
 					<div className="col-xs-8">
-						<Geosuggest className="" placeholder="Place name" onSuggestSelect={(suggest)=>{this.onSuggestSelect(suggest)}} required />
+						<Geosuggest country="np"  className="" placeholder="Place name" onSuggestSelect={(suggest)=>{this.onSuggestSelect(suggest)}} required />
 					</div>
 				</div>
 				<div className="row row-spacing ">
