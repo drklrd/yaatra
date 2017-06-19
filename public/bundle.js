@@ -29426,19 +29426,18 @@ class SideBarAddItenerary extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.
 				dayObj.push(currentvalue);
 			}
 			var toDayExists = this.doDayExists(dayObj, toDay);
-			if (toDayExists !== undefined) {
-				try {
-					this.refs['startplace'].update(dayObj[toDayExists].startplace ? dayObj[toDayExists].startplace.description : "");
-					this.refs['endplace'].update(dayObj[toDayExists].endplace ? dayObj[toDayExists].endplace.description : "");
-					this.refs['time'].value = dayObj[toDayExists].time;
-				} catch (e) {}
-			} else {
-				this.clearForm(fromDay);
-			}
 			this.setState({
 				currentDay: toDay,
 				dayObj: dayObj,
 				blink: false
+			}, function () {
+				if (toDayExists !== undefined) {
+					if (this.refs['endplace']) this.refs['endplace'].update(dayObj[toDayExists].endplace ? dayObj[toDayExists].endplace.description : "");
+					if (this.refs['time']) this.refs['time'].value = dayObj[toDayExists].time;
+					if (this.refs['startplace']) this.refs['startplace'].update(dayObj[toDayExists].startplace ? dayObj[toDayExists].startplace.description : "");
+				} else {
+					this.clearForm(fromDay);
+				}
 			});
 		} else {
 			this.setState({

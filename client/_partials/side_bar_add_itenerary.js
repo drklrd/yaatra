@@ -56,21 +56,18 @@ export default class SideBarAddItenerary extends React.Component {
 				dayObj.push(currentvalue);
 			}
 			var toDayExists = this.doDayExists(dayObj, toDay);
-			if (toDayExists !== undefined) {
-				try {
-					this.refs['startplace'].update(dayObj[toDayExists].startplace ? dayObj[toDayExists].startplace.description : "");
-					this.refs['endplace'].update(dayObj[toDayExists].endplace ? dayObj[toDayExists].endplace.description : "");
-					this.refs['time'].value = dayObj[toDayExists].time;
-				}
-				catch(e){
-				}
-			} else {
-				this.clearForm(fromDay);
-			}
 			this.setState({
 				currentDay: toDay,
 				dayObj: dayObj,
 				blink : false
+			},function(){
+				if (toDayExists !== undefined) {
+						if(this.refs['endplace']) this.refs['endplace'].update(dayObj[toDayExists].endplace ? dayObj[toDayExists].endplace.description : "");
+						if(this.refs['time']) this.refs['time'].value = dayObj[toDayExists].time;
+						if(this.refs['startplace']) this.refs['startplace'].update(dayObj[toDayExists].startplace ? dayObj[toDayExists].startplace.description : "");
+				} else {
+					this.clearForm(fromDay);
+				}
 			});
 		}else{
 			this.setState({
@@ -92,7 +89,7 @@ export default class SideBarAddItenerary extends React.Component {
 				<h2 className={this.state.blink ? "blink" : ""}>Day {this.state.currentDay}</h2>
 				<span className="out-of-days"> of your {this.props.travelDays} day(s) itenerary </span>
 				{
-					this.state.currentDay === 1 && (<div className="row row-spacing ">
+					(this.state.currentDay === 1 ) && (<div className="row row-spacing ">
 						<div className="col-xs-5">
 							<span> {"Starting Point for the day "} </span>
 						</div>
