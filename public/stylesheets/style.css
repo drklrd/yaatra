@@ -216,3 +216,5 @@ body, html {
   font-style: italic;
   font-size:11px;
 }
+
+.map { height: 100vh; }

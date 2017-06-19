@@ -47,7 +47,7 @@ export default class Sidebar extends React.Component {
 				</div>
 				<div id="collapse1" className="panel-collapse collapse in">
 					<hr/>
-					{this.state.sideBarElement === 'form' &&  <SideBarForm submitAction={this.startAddingItenerary.bind(this)} />}
+					{this.state.sideBarElement === 'form' &&  <SideBarForm submitAction={this.startAddingItenerary.bind(this)}  handleCoordinates={this.props.handleCoordinates} />}
 					{this.state.sideBarElement === 'add' &&  <SideBarAdd travelDays={this.state.travelDays} />}
 					<br/>
 				</div>

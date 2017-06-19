@@ -7,11 +7,18 @@ export default class App extends React.Component {
 	constructor(props){
 		super(props);
 		this.state = {
-			position : [27.7172, 85.3240]
+			position : [27.7172, 85.3240],
+			markers : []
 		}
 	}
 
-	componentWillMount() {
+	handleCoordinates(coordinates) {
+		console.log('$$$',coordinates);
+		let {markers} = this.state;
+		markers.push(coordinates.location)
+		this.setState({
+			markers
+		})
 
 	}
 
@@ -38,11 +45,11 @@ export default class App extends React.Component {
 				</nav>
 
 				<div className="col-xs-12 col-sm-12">
-					<MapView position={this.state.position} />
+					<MapView position={this.state.position} markers={this.state.markers} />
 				</div>
 
 				<div className="col-sm-3 side-bar">
-					<Sidebar/>
+					<Sidebar handleCoordinates={this.handleCoordinates.bind(this)}  />
 				</div>
 			</div>
 		)

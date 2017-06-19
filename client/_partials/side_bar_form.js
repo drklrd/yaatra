@@ -23,7 +23,8 @@ export default class SideBarForm extends React.Component{
 	onSuggestSelect(suggest){
 		this.setState({
 			placeOfVisit : suggest
-		})
+		});
+		this.props.handleCoordinates(suggest)
 	}
 
 	handleFormSubmit(){
