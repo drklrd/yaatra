@@ -61,9 +61,9 @@ body, html {
   border-radius: 0px !important;
 }
 
-.leaflet-container { 
+.leaflet-container {
   margin-top: 6vh;
-  height: 99vh; 
+  height: 99vh;
 }
 
 .leaflet-tile-pane {
@@ -99,7 +99,7 @@ body, html {
   animation: blinker 1s linear infinite;
 }
 
-@keyframes blinker {  
+@keyframes blinker {
   50% { opacity: 0; }
 }
 
@@ -188,7 +188,7 @@ body, html {
     text-align: center;
     padding: 5px 0;
     border-radius: 6px;
- 
+
     /* Position the tooltip text - see examples below! */
     position: absolute;
     z-index: 1;
@@ -217,4 +217,19 @@ body, html {
   font-size:11px;
 }
 
-.map { height: 93vh; }
+.map {
+    height: 93vh;
+}
+
+.circle {
+    float : left;
+    margin-top: 100px;
+    width:200px;
+    height:200px;
+    border-radius:250px;
+    font-size:13px;
+    color:#fff;
+    line-height:200px;
+    text-align:center;
+    background:#CDA83B
+}

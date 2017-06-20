@@ -29190,7 +29190,26 @@ class Header extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
 class Home extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
 
     render() {
-        return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__header__["a" /* default */], null);
+        return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'div',
+            null,
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__header__["a" /* default */], null),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                'div',
+                { className: 'row col-xs-offset-3 col-xs-9 ' },
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                    'div',
+                    { className: 'circle ' },
+                    '15 iteneraries added'
+                ),
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div', { className: 'col-xs-2' }),
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                    'div',
+                    { className: 'circle col-xs-3' },
+                    '15 iteneraries favorited'
+                )
+            )
+        );
     }
 }
 /* harmony export (immutable) */ __webpack_exports__["a"] = Home;
