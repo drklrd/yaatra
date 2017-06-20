@@ -6,8 +6,8 @@ export default class SideBarAddItenerary extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			// days: this.props.travelDays,
-			days : 3,
+			days: this.props.travelDays,
+			// days : 3,
 			currentDay: 1,
 			dayObj: []
 		};
