@@ -3,6 +3,15 @@ import ReactDOM from 'react-dom';
 import { Link } from 'react-router'
 
 export default class App extends React.Component {
+    searchFocus(mode){
+        if(mode === "focus"){
+            document.body.style.opacity = "0.9";
+        }else{
+            document.body.style.opacity = "1.0";
+
+        }
+    }
+
     render() {
         return (
             <div>
@@ -24,6 +33,12 @@ export default class App extends React.Component {
                                     </button>
                                 </Link>
 
+                        </div>
+
+                        <div className="col-xs-6 search-bar">
+                            <div >
+                                <input type="text" placeholder="Search Itenerary" onFocus={()=>{this.searchFocus('focus')}} onBlur={()=>{this.searchFocus('blur')}}></input>
+                            </div>
                         </div>
 
                     </div>
